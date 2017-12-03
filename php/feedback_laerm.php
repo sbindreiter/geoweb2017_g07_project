@@ -2,7 +2,7 @@
 <head>
     <title>geoweb.m10 - Gruppe 7 Projekt Laerm</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="../../g7default.css">
+    <link rel="stylesheet" type="text/css" href="../g7default.css">
 </head>
 
 <body onscroll="navbars2Top()">
@@ -24,7 +24,7 @@
 
 // Datenbank Öffnen, Tabellenfunktion (einmalig) einbinden
 include_once 'geoweb_pg_open.php';
-include_once 'geoweb_pg_table_function.php';
+include_once '../intranet/uebungen/geoweb_pg_table_function.php';
 
 // Abfrage festlegen (Bundesländer)
 $Sql = 'SELECT g7_li_laermcat as Art, case when g7_li_privcat = 1 then 'oeffentlich' when g7_li_privcat = 2 then 'halboeffentlich' else 'privat' end as Privat, g7_li_name as Name, g7_li_email as Email, g7_li_msg as Beschreibung, ST_AsText(g7_li_geom) As Geometrie FROM g07.g7_laerminfo order by g7_li_id desc';
@@ -42,7 +42,7 @@ geoweb_pg_table($result);
 // Datenbank schlieÃŸen
 include 'geoweb_pg_close.php';
 
-?> 
+?>
 
 </div>
 
