@@ -8,8 +8,7 @@
     "colormap": "^2.2.0",
     "ol": "^4.3.1",
     "ol-hashed": "^1.0.2",
-    "ol-mapbox-style": "^2.6.1",
-    "javascript-autocomplete": "^1.0.3"
+    "ol-mapbox-style": "^2.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -48,6 +47,6 @@
     "start": "webpack-dashboard -- webpack-dev-server",
     "lint": "eslint .",
     "test": "npm run lint",
-    "build": "webpack --env=prod"
+    "build": "webpack -- env=prod"
   }
 }
