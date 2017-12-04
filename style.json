@@ -8,14 +8,6 @@
   ],
   "zoom": 13,
   "sources": {
-    "userentries": {
-      "type": "geojson",
-      "data": "https://student.ifip.tuwien.ac.at/geoweb/2017/g07/map/postgis_li_geojson.php"
-    },
-    "bezirksgrenzenogd": {
-      "type": "geojson",
-      "data": "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BEZIRKSGRENZEOGD&srsName=EPSG:4326&outputFormat=json"
-    },
     "basemap": {
       "type": "raster",
       "tiles": [
@@ -52,43 +44,6 @@
       "id": "basemap_at",
       "type": "raster",
       "source": "basemap"
-    },
-    {
-      "id": "bezirksgrenzen",
-      "type": "raster",
-      "source": "bezirksgrenzenogd"
-    },
-    {
-      "id": "ruhe",
-      "type": "circle",
-      "source": "userentries",
-      "paint": {
-        "circle-radius": 5,
-        "circle-color": "#FF0000"
-      },
-      "filter": [
-        "all", [
-          "==",
-          "g7_li_laermcat",
-          "R"
-        ]
-      ]
-    },
-    {
-      "id": "laerm",
-      "type": "circle",
-      "source": "userentries",
-      "paint": {
-        "circle-radius": 5,
-        "circle-color": "#FF0000"
-      },
-      "filter": [
-        "all", [
-          "==",
-          "g7_li_laermcat",
-          "L"
-        ]
-      ]
     }
   ]
 }

@@ -5,7 +5,7 @@
 $dbhost = 'localhost';
 $dbname = 'geoweb2017';
 $dbuser = 'geoweb2017';
-$dbpass = 'xxx';
+$dbpass = 'geoweb4m10!';
 
 // Verbindung zum PostgreSQL-Datenbank herstellen (bei Fehler Abbruch)
 $db = pg_connect
