@@ -63,8 +63,40 @@
 
     #popup-content th {
       text-align: left;
-      width: 125px;
+      width: 200px;
     }
+
+    /*capt styles*/
+/*
+    .capt{
+    	background-color:grey;
+    	width: 300px;
+    	height:100px;
+
+    }
+
+   #mainCaptcha{
+    	position: relative;
+    	left : 60px;
+    	top: 5px;
+
+    }
+
+    #refresh{
+    	position:relative;
+    	left:230px;
+    	width:30px;
+    	height:30px;
+    	bottom:45px;
+    	background-image: url(rpt.jpg);
+    }
+
+    #txtInput, #chkAndSend{
+    	position: relative;
+    	left:40px;
+    	bottom: 40px;
+    }
+*/
   </style>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/g7default.css">
@@ -84,31 +116,35 @@
     <a class="intranet" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/intranet/start_intranet.htm">Intranet</a>
   </div>
   <div class="content">
+    <script type="text/javascript" src="captcha.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <div id="map" ><!--class="fullscreen"-->
-      <div class="arrow_box" id="popup-container">
-        <div id="popup-content"></div>
-      </div>
     </div>
-    <script type="text/javascript" src="main.48be91389c933c22fbc9.js"></script>
+    <div class="arrow_box" id="popup-container">
+      <div id="popup-content"></div>
+    </div>
+    <div class="arrow_box" id="popup-container2" onload="Captcha();">
+      <div id="popup-content2"></div>
+    </div>
   </div>
   <div class="footer">
     <p> Copyright &copy; 2017 <a href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/impressum.htm" target="self">geowebgruppe7</a></p>
   </div>
-  <script type="text/javascript" src="main.a7876789a862f0587d62.js"></script>
 </body>
 
 <script>
   var navbar = document.getElementById("navbar");
-  var navbarsub = document.getElementById("navbarsub");
-  var sticky = navbarsub.offsetTop;
+  //var navbarsub = document.getElementById("navbarsub");
+  //var sticky = navbarsub.offsetTop;
+  var sticky = navbar.offsetTop;
 
   function navbars2Top() {
     if (window.pageYOffset >= sticky) {
       navbar.classList.add("sticky");
-      navbarsub.classList.add("sticky_nav2");
+      //navbarsub.classList.add("sticky_nav2");
     } else {
       navbar.classList.remove("sticky");
-      navbarsub.classList.remove("sticky_nav2");
+      //navbarsub.classList.remove("sticky_nav2");
     }
   }
 </script>
