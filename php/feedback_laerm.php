@@ -27,7 +27,7 @@ include_once 'geoweb_pg_open.php';
 include_once 'geoweb_pg_table_function.php';
 
 // Abfrage festlegen (Bundesländer)
-$Sql = "SELECT g7_li_laermcat as Art, case when g7_li_privcat = 1 then 'oeffentlich' when g7_li_privcat = 2 then 'halboeffentlich' else 'privat' end as Privat, g7_li_name as Name, g7_li_email as Email, g7_li_msg as Beschreibung, ST_AsText(g7_li_geom) As Geometrie FROM g07.g7_laerminfo order by g7_li_id desc";
+$Sql = "SELECT g7_li_date as Datum, g7_li_laermcat as Art, case when g7_li_privcat = 1 then 'oeffentlich' when g7_li_privcat = 2 then 'halboeffentlich' else 'privat' end as Privat, g7_li_name as Name, g7_li_email as Email, g7_li_place as Ort, g7_li_desc as Beschreibung, ST_AsText(g7_li_geom) As Geometrie FROM g07.g7_laerminfo order by g7_li_id desc";
 
 // Abfrage durchfÃ¼hren
 $result = pg_query($db, $Sql)

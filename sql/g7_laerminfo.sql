@@ -2,11 +2,12 @@ CREATE TABLE g7_laerminfo (
     g7_li_id integer NOT NULL,
     g7_li_name text,          -- user name
     g7_li_email text,         -- email adresse user
-    g7_li_msg text,           -- beschreibung
+    g7_li_desc text,           -- beschreibung
     g7_li_laermcat character, -- R oder L
     g7_li_privcat integer,    -- 1 = oeffentlich, 2 = halboeffentlich, 3 = privat
     g7_li_date text,          -- datum
     g7_li_geom geometry       -- geometry
+    g7_li_place text          -- ort    
 );
 
 CREATE SEQUENCE g7_laerm_id_seq
