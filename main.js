@@ -17,9 +17,7 @@ import IconStyle from 'ol/style/icon';
 //import Fill from 'ol/style/fill';
 //import Stroke from 'ol/style/stroke';
 import proj from 'ol/proj';
-import {
-  apply
-} from 'ol-mapbox-style';
+import { apply } from 'ol-mapbox-style';
 import AutoComplete from 'javascript-autocomplete'; //additional includes für UE4
 import Overlay from 'ol/overlay';
 //import coordinate from 'ol/coordinate';

@@ -7,7 +7,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
   <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
   <style>
     <!-- html, body, -->
     #map {
@@ -153,7 +152,23 @@
           border: 1px solid #888;
           width: 400px;
       }
+/*
+      .tooltiptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #31a354 transparent transparent transparent;
+      }
 
+      #legendeButton:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+      }
+*/
       /* The Close Button */
       .close {
           color: #aaaaaa;
@@ -229,7 +244,10 @@
    </div>
 
     <div id="map" ><!--class="fullscreen"-->
-    <button id="legendeButton" name="legende" type="button">&#x2612;</button>
+    <button id="legendeButton" name="legende" type="button">&#x2612;
+        <!--  <span class="tooltiptext">Karteneinstellungen</span>-->
+    </button>
+
     <input id="q" name="q" type="text" placeholder="Enter address here..."></input>
     </div>
     <div id="popupinfo" class="arrow_box" >
