@@ -90,7 +90,7 @@
   //echo "<h2>Danke für Ihren Eintrag!</h2><p>Die Daten wurden in der Datenbank gespeichert!</p>";
 /* Alternativ: Aufruf einer Html-Seite für Danksagung */
 /* header( "Location: http://xxx.yyy/feedback_thank.htm" );exit; */
-   header( "Location: http://localhost:3000" );exit;
+   header( "Location: https://student.ifip.tuwien.ac.at/geoweb/2017/g07/project/index.html" );exit;
 ?>
 </body>
 </html>
