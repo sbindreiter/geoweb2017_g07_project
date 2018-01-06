@@ -5,9 +5,13 @@
   <!--<meta charset="utf-8" name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">-->
   <title>Geoweb 2017 - g07 - Project Map</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
   <style>
     <!-- html, body, -->
     #map {
+      display: flex;
       font-family: sans-serif;
       margin: 0;
       height: 100%;
@@ -20,6 +24,27 @@
       left: 50px;
       z-index: 1;
       width: 300px;
+    }
+
+    #legendeButton{
+      position: relative;
+      border-radius: 2px 2px 0 0;
+      //display: block;
+      margin: 1px;
+      padding: 0;
+      color: white;
+      font-size: 1.14em;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      height: 1.4em;
+      width: 1.4em;
+      line-height: .4em;
+      background-color: rgba(0,60,136,0.5);
+
+      top: 32px;
+      left: 40px;
+      z-index: 1;
     }
 
     .arrow_box {
@@ -56,51 +81,98 @@
       margin-left: -11px;
     }
 
-    #popup-content {
+    #popupinfo-content {
       max-height: 200px;
-      overflow: scroll;
+      overflow-y: scroll;
     }
 
-    #popup-content th {
+    #popupinfo-content th {
       text-align: left;
-      width: 200px;
+      width: 100px;
     }
 
-    /*capt styles*/
-/*
-    .capt{
-    	background-color:grey;
-    	width: 300px;
-    	height:100px;
-
+    th.ruhe {
+        color: #31a354;
     }
 
-   #mainCaptcha{
-    	position: relative;
-    	left : 60px;
-    	top: 5px;
-
+    th.laerm {
+        color: #E62E00;
     }
 
-    #refresh{
-    	position:relative;
-    	left:230px;
-    	width:30px;
-    	height:30px;
-    	bottom:45px;
-    	background-image: url(rpt.jpg);
+    input.laerm {
+      width: 173px;
     }
 
-    #txtInput, #chkAndSend{
-    	position: relative;
-    	left:40px;
-    	bottom: 40px;
+    #popupform-content {
+      max-height: 250px;
+      overflow-y: scroll;
     }
-*/
+
+    #popupform-content td {
+      text-align: left;
+      vertical-align: text-top;
+      width: 150px;
+    }
+
+    #inputFormdesc {
+      max-height: 150px;
+      height: 50px;
+      width: 173px;
+      vertical-align: text-top;
+    }
+
+    fieldset.insertForm {
+      border-style: none
+    }
+
+    #layertree li > span {
+        cursor: pointer;
+      }
+
+      /* The legende (background) */
+      .legende {
+          display: none;
+          //visibility: hidden;/* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 5; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Molegendedal Content */
+      .legende-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 400px;
+      }
+
+      /* The Close Button */
+      .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
   </style>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/g7default.css">
+  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
   <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/g7default.css">
 </head>
 
 <body onscroll="navbars2Top()">
@@ -116,21 +188,87 @@
     <a class="intranet" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/intranet/start_intranet.htm">Intranet</a>
   </div>
   <div class="content">
-    <script type="text/javascript" src="captcha.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <p>
+      Mit Hilfe der Icons können Sie bezogen auf ihre persönliche Wahrnehmung öffentliche, halb-
+      öffentlich und private Ruheoasen markieren und mit Anderen teilen oder Lärmzonen, die als
+      besonders störend empfunden werden, darstellen.
+    </p>
+   <!-- The Legende -->
+   <div id="legende" class="legende">
+      <!-- Legende content -->
+      <div class="legende-content">
+        <span class="close">&times;</span>
+        <h2>Inhalt der Lärmkarte</h2>
+        <p>Sie können anhand der Checkboxen die unterschiedlichen Ebenen ein- und ausschalten.
+        <br>Das Adresssuchfeld hilft Ihnen bei der schnelleren Navigation.</p>
+        <div id="layertree">
+          <table>
+            <tr>
+            <td><img src="data/marker_oase1.png" alt="Ruheoase1"></td>
+            <td><input id="r1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()""-->
+            <td>Öffentliche Ruheoasen sind Orte, die der breiten Öffentlichkeit ohne Einschränkung von Tageszeiten zur Verfügung stehen und eine hohe Qualität aufgrund ihrer Lärmfreiheit aufweisen.
+            </td>
+            </tr>
+            <tr><td><img src="data/marker_oase2.png" alt="Ruheoase2"></td>
+              <td><input id="r2" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td>Unter halböffentlichen Zonen versteht man im Allgemeinen jene Flächen, die sich auf privaten Grundstücken befinden und nicht durchgehend betretbar sind, jedoch während der Öffnungszeiten der Erholung vom Lärm dienen können.</td>
+            </tr>
+            <tr>
+              <td><img src="data/marker_oase3.png" alt="Ruheoase3"></td>
+              <td><input id="r3" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td>Private Ruheoasen können zweierlei verstanden werden. Entweder ist der Zutritt für die Öffentlichkeit untersagt oder es handelt sich um ein kostenpflichtiges Erholungsangebot abseits Lärmverschmutzer Orte.</td>
+            </tr>
+            <tr>
+              <td><img src="data/marker_noise1.png" alt="Lärmort"></td>
+              <td><input id="l1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td>Als Kontrast zu den Ruheoasen können in der Karte Orte definiert werden, die besonders negativ wahrgenommen werden. Sie können mit Hilfe dieses Icons auf stark lärmverschmutze Orte hinweisen.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+   </div>
+
     <div id="map" ><!--class="fullscreen"-->
+    <button id="legendeButton" name="legende" type="button">&#x2612;</button>
+    <input id="q" name="q" type="text" placeholder="Enter address here..."></input>
     </div>
-    <div class="arrow_box" id="popup-container">
-      <div id="popup-content"></div>
+    <div id="popupinfo" class="arrow_box" >
+      <div id="popupinfo-content"></div>
     </div>
-    <div class="arrow_box" id="popup-container2" onload="Captcha();">
-      <div id="popup-content2"></div>
+    <div id="popupform" class="arrow_box" >
+      <div id="popupform-content"></div>
     </div>
   </div>
   <div class="footer">
     <p> Copyright &copy; 2017 <a href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/impressum.htm" target="self">geowebgruppe7</a></p>
   </div>
 </body>
+
+<script>
+// Get the modal
+var legende = document.getElementById('legende');
+// Get the button that opens the modal
+var btn = document.getElementById("legendeButton");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    legende.style.display = "block";
+    //legende.style.visibility = "visible";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    legende.style.display = "none";
+    //legende.style.visiblity = "hidden";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == legende) {
+        legende.style.display = "none";
+        //legende.style.visiblity = "hidden";
+    }
+}
+</script>
 
 <script>
   var navbar = document.getElementById("navbar");
