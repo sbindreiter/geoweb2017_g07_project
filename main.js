@@ -291,8 +291,8 @@ function setLayerInputChangeFnc(InputName, LayerName) {
 
 setLayerInputChangeFnc("#v_r1", 'r1');
 setLayerInputChangeFnc("#v_r2", 'r2');
-setLayerInputChangeFnc("#v_l1", 'r3');
-setLayerInputChangeFnc("#v_r3", 'l1');
+setLayerInputChangeFnc("#v_r3", 'r3');
+setLayerInputChangeFnc("#v_l1", 'l1');
 
 //DEBUG
 // var countChecked = function() {
