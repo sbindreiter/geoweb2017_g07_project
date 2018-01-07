@@ -7,10 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
   <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
+  <!--allgemeine stylses-->
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/g7default.css">
+  <!-- spezielle Styles-->
   <style>
     <!-- html, body, -->
-    #map {
-      display: flex;
+    #map .map {
+      position: relative:
       font-family: sans-serif;
       margin: 0;
       height: 100%;
@@ -18,17 +23,18 @@
     }
 
     #q {
-      position: relative;
-      top: 30px;
-      left: 50px;
-      z-index: 1;
+      position: absolute;
+      //display: inline-block;
+      left: 30px;
+      z-index: 2;
       width: 300px;
     }
 
     #legendeButton{
-      position: relative;
+      position: absolute;
+      top: -2px;
+      //display: inline-block;
       border-radius: 2px 2px 0 0;
-      //display: block;
       margin: 1px;
       padding: 0;
       color: white;
@@ -40,10 +46,13 @@
       width: 1.4em;
       line-height: .4em;
       background-color: rgba(0,60,136,0.5);
+      z-index: 2;
+    }
 
-      top: 32px;
+    .divonmap {
+      position: relative;
       left: 40px;
-      z-index: 1;
+      top: 10px;
     }
 
     .arrow_box {
@@ -185,9 +194,6 @@
       }
 
   </style>
-  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
-  <link href="style.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/g7default.css">
 </head>
 
 <body onscroll="navbars2Top()">
@@ -242,22 +248,20 @@
         </div>
       </div>
    </div>
-
-    <div id="map" ><!--class="fullscreen"-->
-    <button id="legendeButton" name="legende" type="button">&#x2612;
-        <!--  <span class="tooltiptext">Karteneinstellungen</span>-->
-    </button>
-
-    <input id="q" name="q" type="text" placeholder="Enter address here..."></input>
-    </div>
-    <div id="popupinfo" class="arrow_box" >
-      <div id="popupinfo-content"></div>
-    </div>
-    <div id="popupform" class="arrow_box" >
-      <div id="popupform-content"></div>
-    </div>
+      <div id="map" class="fullscreen map">
+        <div class="divonmap">
+        <button id="legendeButton" name="legende" type="button">&#x2612;</button>
+        <input id="q" name="q" type="text" placeholder="Enter address here..."></input>
+        </div>
+      </div>
+      <div id="popupinfo" class="arrow_box">
+        <div id="popupinfo-content"></div>
+      </div>
+      <div id="popupform" class="arrow_box" >
+        <div id="popupform-content"></div>
+      </div>
      <!-- <div id="debug"></div><!-- debug-->
-  </div>
+  </div><!--content-->
   <div class="footer">
     <p> Copyright &copy; 2017 <a href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/impressum.htm" target="self">geowebgruppe7</a></p>
   </div>
