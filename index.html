@@ -220,22 +220,22 @@
           <table>
             <tr>
             <td><img src="data/marker_oase1.png" alt="Ruheoase1"></td>
-            <td><input id="r1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()""-->
+            <td><input id="v_r1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()""-->
             <td>Öffentliche Ruheoasen sind Orte, die der breiten Öffentlichkeit ohne Einschränkung von Tageszeiten zur Verfügung stehen und eine hohe Qualität aufgrund ihrer Lärmfreiheit aufweisen.
             </td>
             </tr>
             <tr><td><img src="data/marker_oase2.png" alt="Ruheoase2"></td>
-              <td><input id="r2" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td><input id="v_r2" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
               <td>Unter halböffentlichen Zonen versteht man im Allgemeinen jene Flächen, die sich auf privaten Grundstücken befinden und nicht durchgehend betretbar sind, jedoch während der Öffnungszeiten der Erholung vom Lärm dienen können.</td>
             </tr>
             <tr>
               <td><img src="data/marker_oase3.png" alt="Ruheoase3"></td>
-              <td><input id="r3" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td><input id="v_r3" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
               <td>Private Ruheoasen können zweierlei verstanden werden. Entweder ist der Zutritt für die Öffentlichkeit untersagt oder es handelt sich um ein kostenpflichtiges Erholungsangebot abseits Lärmverschmutzer Orte.</td>
             </tr>
             <tr>
               <td><img src="data/marker_noise1.png" alt="Lärmort"></td>
-              <td><input id="l1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
+              <td><input id="v_l1" class="visible" type="checkbox" checked="checked" /></td><!--onload="inputchanged()" onchange="inputChanged()-->
               <td>Als Kontrast zu den Ruheoasen können in der Karte Orte definiert werden, die besonders negativ wahrgenommen werden. Sie können mit Hilfe dieses Icons auf stark lärmverschmutze Orte hinweisen.</td>
             </tr>
           </table>
@@ -256,6 +256,7 @@
     <div id="popupform" class="arrow_box" >
       <div id="popupform-content"></div>
     </div>
+     <!-- <div id="debug"></div><!-- debug-->
   </div>
   <div class="footer">
     <p> Copyright &copy; 2017 <a href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/impressum.htm" target="self">geowebgruppe7</a></p>
@@ -272,7 +273,9 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     legende.style.display = "block";
-    //legende.style.visibility = "visible";
+    // if(legende.style.visibility == "hidden") {
+    //   legende.style.visibility = "visible";
+    // }
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -304,5 +307,4 @@ window.onclick = function(event) {
     }
   }
 </script>
-
 </html>

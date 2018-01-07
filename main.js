@@ -17,7 +17,7 @@ import IconStyle from 'ol/style/icon';
 //import Fill from 'ol/style/fill';
 //import Stroke from 'ol/style/stroke';
 import proj from 'ol/proj';
-import { apply } from 'ol-mapbox-style';
+import {apply} from 'ol-mapbox-style';
 import AutoComplete from 'javascript-autocomplete'; //additional includes für UE4
 import Overlay from 'ol/overlay';
 //import coordinate from 'ol/coordinate';
@@ -279,19 +279,37 @@ map.on('singleclick', function(e) {
   }
 });
 
-
-function bindInputs(layer) {
-  if (layer.get('name') === 'r1' || layer.get('name') === 'r2' || layer.get('name') === 'r3' || layer.get('name') === 'l1') {
-    var visibilityInput = $(layer.get('name'));
-    visibilityInput.on('change', function() {
-      layer.setVisible(this.checked);
-    });
-    visibilityInput.prop('checked', layer.getVisible());
-  }
+function setLayerInputChangeFnc(InputName, LayerName) {
+  $(InputName).change(function() {
+    if (this.checked) {
+      changeLayerVisiblity(LayerName, true);
+    } else {
+      changeLayerVisiblity(LayerName, false);
+    }
+  });
 }
 
-//function inputChanged() {
+setLayerInputChangeFnc("#v_r1", 'r1');
+setLayerInputChangeFnc("#v_r2", 'r2');
+setLayerInputChangeFnc("#v_l1", 'r3');
+setLayerInputChangeFnc("#v_r3", 'l1');
+
+//DEBUG
+// var countChecked = function() {
+//   var n = $( "input:checked" ).length;
+//   $("#debug").text( n + (n === 1 ? " is" : " are") + " checked!" );
+// };
+// countChecked();
+// $( "input[type=checkbox]" ).on( "click", countChecked );
+
+function setLayerVisiblity(layer, on_off) {
+  layer.setVisible(on_off);
+}
+function changeLayerVisiblity(layerName, on_off) {
   map.getLayers().forEach(function(layer, i) {
-    bindInputs(layer);
+    if (layer.get('name') === layerName) {
+      setLayerVisiblity(layer, on_off);
+    }
+
   });
-//}
+}
