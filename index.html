@@ -208,11 +208,21 @@
     <a href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/intranet/feedback.php">Feedback</a>
     <a class="intranet" href="https://student.ifip.tuwien.ac.at/geoweb/2017/g07/intranet/start_intranet.htm">Intranet</a>
   </div>
+<div id="navbarsub">
+  <a href="../projektbeschreibung.htm">Projektinfo</a>
+  <a class="active" href="index.html">L&auml;rmkarte</a>
+</div>  
   <div class="content">
     <p>
       Mit Hilfe der Icons können Sie bezogen auf ihre persönliche Wahrnehmung öffentliche, halb-
-      öffentlich und private Ruheoasen markieren und mit Anderen teilen oder Lärmzonen, die als
-      besonders störend empfunden werden, darstellen.
+      öffentlich und private Ruheoasen (
+      <img src="data/marker_oase1.png" alt="Ruheoase1" height=20px >,
+      <img src="data/marker_oase2.png" alt="Ruheoase2" height=20px >,
+      <img src="data/marker_oase3.png" alt="Ruheoase3" height=20px >,
+      )
+      markieren und mit Anderen teilen oder Lärmzonen(
+      <img src="data/marker_noise1.png" alt="Lärmort" height=20px >
+      ), die als besonders störend empfunden werden, darstellen.
     </p>
    <!-- The Legende -->
    <div id="legende" class="legende">
@@ -297,17 +307,17 @@ window.onclick = function(event) {
 
 <script>
   var navbar = document.getElementById("navbar");
-  //var navbarsub = document.getElementById("navbarsub");
-  //var sticky = navbarsub.offsetTop;
-  var sticky = navbar.offsetTop;
+  var navbarsub = document.getElementById("navbarsub");
+  var sticky = navbarsub.offsetTop;
+  //var sticky = navbar.offsetTop;
 
   function navbars2Top() {
     if (window.pageYOffset >= sticky) {
       navbar.classList.add("sticky");
-      //navbarsub.classList.add("sticky_nav2");
+      navbarsub.classList.add("sticky_nav2");
     } else {
       navbar.classList.remove("sticky");
-      //navbarsub.classList.remove("sticky_nav2");
+      navbarsub.classList.remove("sticky_nav2");
     }
   }
 </script>
