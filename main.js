@@ -200,6 +200,16 @@ ruheLayer3.set('name', 'r3', true);
 laermLayer.set('name', 'l1', true);
 
 map.on('singleclick', function(e) {
+  var overlayPos = overlay.getPosition();
+  var overlayPos2 = overlay2.getPosition();
+
+  if (overlayPos != undefined || overlayPos2 != undefined) {
+    //falls eines der beiden overlays angezeigt wird
+    //wegschalten und raus
+    overlay.setPosition();
+    overlay2.setPosition();
+    return;
+  }  
   var markup = '';
   map.forEachFeatureAtPixel(e.pixel, function(feature) {
     var properties = feature.getProperties();
